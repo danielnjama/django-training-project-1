@@ -16,7 +16,7 @@ class subjects(models.Model):
     
     
 class courseOffered(models.Model):
-    courseSubject = models.ForeignKey(subjects, on_delete=models.CASCADE)  #PROTECT 
+    courseSubject = models.ForeignKey(subjects, on_delete=models.CASCADE,related_name="courseoffered")  #PROTECT 
     courseImage = models.ImageField(upload_to="images/")
     courseName = models.CharField(max_length=100)
     courseDuration =  models.DurationField(default=timedelta(hours=3, minutes=30),help_text="Enter the duration of the course in hours and minutes.")

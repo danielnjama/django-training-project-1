@@ -13,7 +13,8 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url':('title',)}
     
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['post','email','created_at','approved']
+    list_display = ['post','email','created_at','content','approved']
+    list_editable =['approved']
 
 
 admin.site.register(Category,CategoryAdmin)

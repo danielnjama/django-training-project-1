@@ -10,18 +10,23 @@ $(function () {
             var email = $("input#email").val();
             var subject = $("input#subject").val();
             var message = $("textarea#message").val();
+            var csrfmiddlewaretoken = $('input[name="csrfmiddlewaretoken"]').val()
 
             $this = $("#sendMessageButton");
             $this.prop("disabled", true);
 
             $.ajax({
-                url: "contact.php",
+                url: '/contact/',
                 type: "POST",
+                // headers: {
+                //     'X-CSRFToken': csrfmiddlewaretoken
+                // },
                 data: {
                     name: name,
                     email: email,
                     subject: subject,
-                    message: message
+                    message: message,
+                    csrfmiddlewaretoken: csrfmiddlewaretoken
                 },
                 cache: false,
                 success: function () {
